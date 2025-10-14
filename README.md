@@ -1,5 +1,5 @@
 # US-Transit-Accessibility: Comparing transit accessibility across U.S Metro Areas by Cities, Income-Level, and Time
-### Project for DS4200: Information Presentation &amp; Data Visualization SEC 01 F2025
+### Project for DS4200: Information Presentation &amp; Data Visualization SEC 01 F2025 (Group 5)
 
 ## Introduction
 Public transit plays a vital role in connecting people to jobs, education, and essential services, yet access to reliable transit remains highly uneven across U.S. metropolitan areas. Understanding these disparities is crucial because transit accessibility directly influences economic mobility, quality of life, and social equity. This project explores and compares how easily residents and workers in major U.S. metro regions can reach employment opportunities within a 45-minute commute by transit and walking. By examining these differences, our analysis highlights how variations in transportation infrastructure can shape opportunity and reveal which regions promote inclusive, sustainable growth and which continue to leave communities behind.
