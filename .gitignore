@@ -1,0 +1,70 @@
+# --- OS and editor junk ---
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.log
+.vscode/
+.idea/
+
+# --- Python environment files ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+.ipynb_checkpoints/
+*.egg-info/
+*.egg
+
+# --- Data files ---
+data/
+*.csv
+*.xlsx
+*.xls
+*.ods
+*.json
+*.geojson
+*.xml
+*.zip
+*.tar
+*.gz
+*.gdb/
+*.gdbtable
+*.gdbindexes
+*.gdbtablx
+*.gdbatx
+*.dbf
+*.shp
+*.shx
+*.prj
+*.gpkg
+
+# --- Outputs ---
+outputs/
+results/
+figures/
+plots/
+reports/
+*.png
+*.pdf
+
+# --- Large raw files (EPA datasets, etc.) ---
+SLD_Trans45.gdb/
+CBG_Trans45.csv
+CBG_Trans45.zip
+
+# --- Environment & config ---
+*.yml
+*.yaml
+*.toml
+*.ini
+*.cfg
+
+# --- Temporary / cache directories ---
+.cache/
+logs/
+tmp/
+build/
+dist/
