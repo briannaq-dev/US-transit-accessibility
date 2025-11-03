@@ -2,7 +2,6 @@
 outputs/
 *.geojson
 *.csv
-*.zip
 *.xml
 *.lock
 *.gdb
