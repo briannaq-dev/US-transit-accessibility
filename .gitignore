@@ -1,7 +1,6 @@
 # Ignore large data and output files
 outputs/
 *.geojson
-*.gdb/
 *.csv
 *.zip
 *.xml
