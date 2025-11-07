@@ -1,0 +1,62 @@
+html {
+    background-color: #292525;
+    font-family: "Hanken Grotesk", sans-serif;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+h2 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+body {
+    color: white;
+    font-size: 20px;
+    font-weight: normal;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+.eyebrow {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3;
+}
+
+/* Meta Info Styling */
+.metainfo {
+    display: flex;
+    justify-content: space-between;
+    border-top: solid .5px #545151;
+    border-bottom: solid .5px #545151;
+}
+
+/* Column Table Styling */
+
+.column-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-family: sans-serif;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 8px 12px;
+}
+
+.header {
+    font-weight: bold;
+}
+
+.cell {
+    padding: 8px 12px;
+    margin-right: 10px;
+    background-color: #3D3535;
+    font-family: "Hanken Grotesk", sans-serif;
+}
