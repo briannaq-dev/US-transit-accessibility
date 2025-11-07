@@ -19,6 +19,10 @@ body {
     font-family: "Hanken Grotesk", sans-serif;
 }
 
+img {
+    object-fit: contain;
+}
+
 .eyebrow {
     font-family: "Space Grotesk", sans-serif;
     font-size: 20px;
