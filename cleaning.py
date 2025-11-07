@@ -57,6 +57,8 @@ agg = group.agg(
     avg_access=('TrAccess_Index', 'mean'),
     avg_pop=('Pct_Pop_byTr_av', 'mean') if 'Pct_Pop_byTr_av' in df.columns else ('Pct_Pop_byTr', 'mean'),
     avg_jobs=('Pct_Jobs_byTr_av', 'mean') if 'Pct_Jobs_byTr_av' in df.columns else ('Pct_Jobs_byTr', 'mean'),
+    avg_LoWgWrks_byTr=('LoWgWrks_byTr', 'mean') if 'LoWgWrks_byTr' in df.columns else (None, 'mean'),
+    avg_HiWgWrks_byTr=('HiWgWrks_byTr', 'mean') if 'HiWgWrks_byTr' in df.columns else (None, 'mean')
 ).reset_index()
 
 # --- Step 4: Export cleaned data ---
