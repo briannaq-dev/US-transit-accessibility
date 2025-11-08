@@ -99,7 +99,7 @@ transitData.then(function(data) {
     .style("font-size", "18px")
     .style("font-weight", "bold")
     .text("Top 10 Metro Areas: Largest Transit Access Disparities by Wage")
-    .style("fill", "#FFFFFF");;
+    .style("fill", "#FFFFFF");
 
   // --- AXIS LABELS ---
   svg.append("text")
@@ -109,7 +109,7 @@ transitData.then(function(data) {
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Avg. Workers Reachable in 45 min")
-    .style("fill", "#FFFFFF");;
+    .style("fill", "#FFFFFF");
 
   // --- LEGEND ---
   const legend = svg.append("g")

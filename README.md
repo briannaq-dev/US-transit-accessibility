@@ -15,4 +15,4 @@ Determine the following:
 3. Whether there are regional trends linking transit access with population density or urban size.
 
 ## Team
-Zahra Wibisana (Web Development/Design, Choropleth Graph) Brianna Quinn (Interactive Filter Map, Data Cleaning) Wendy Zhu (Data Cleaning, Bar Chart)
+Zahra Wibisana (Web Development/Design, D3 Side by Side Bar Chart Graph) Brianna Quinn (Interactive Filter Map, Data Cleaning) Wendy Zhu (Data Cleaning, Bar Chart)

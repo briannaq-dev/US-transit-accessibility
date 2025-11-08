@@ -51,7 +51,6 @@ img {
 .row {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    padding: 8px 12px;
 }
 
 .header {
