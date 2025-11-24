@@ -41,40 +41,28 @@ plt.tight_layout()
 plt.savefig("outputs/top10_metros_bar.png")
 plt.show()
 
-# Top 3 States Choropleth Maps
-# top3_metros = top10["CBSA_Name"].head(3).tolist()
+# Barplot - Top 10 Low Wage Worker Job Accessibility by Transit
+sns.barplot(y="CBSA_Name", x="avg_LoWgWrks_byTr", data=top10, dodge=False, legend=False)
+plt.title("Top 10 Metro Areas: Low Wage Worker Job Accessibility via Transit (≤45 min Transit)")
+plt.grid(axis="x", linestyle="--", alpha=0.4)
+plt.tight_layout()
+plt.xlabel("Average Amount of Low-Wage Jobs Reachable")
+plt.tight_layout()
+plt.savefig("outputs/top10_lowgwrks_bar.png")
+plt.show()
 
-# for metro in top3_metros:
-#     subset = gdf[gdf["CBSA_Name"] == metro]
-#     if subset.empty:
-#         continue
+# Choropleth - Massachusetts Accessibility Index
+ma_metros = ['Boston-Cambridge-Quincy, MA-NH',
+            'Providence-New Bedford-Fall River, RI-MA',
+            'Barnstable Town, MA',
+            'Pittsfield, MA',
+            'Springfield, MA',
+            'Worcester, MA']
 
-#     fig, ax = plt.subplots(figsize=(8, 6))
-#     subset.plot(
-#         column="TrAccess_Index",
-#         cmap="YlGnBu",
-#         scheme="Quantiles",
-#         k=4,
-#         legend=True,
-#         legend_kwds={
-#             "title": f"Transit Accessibility Index – {metro}",
-#             "fmt": "{:.2f}",
-#             "bbox_to_anchor": (1.05, 1)
-#         },
-#         ax=ax
-#     )
-#     plt.title(f"Transit Accessibility – {metro}", fontsize=12)
-#     plt.axis("off")
-#     plt.tight_layout()
-#     filename = f"outputs/map_accessibility_{metro.replace(',', '').replace(' ', '_')}.png"
-#     plt.savefig(filename, bbox_inches="tight", dpi=300)
-#     plt.close()
-#     print(f"✅ Saved {filename}")
+ma_gdf = gdf[gdf['CBSA_Name'].isin(ma_metros)]
 
-'''
-# Transit Accessibility Index Choropleth Map
-fig, ax = plt.subplots(figsize=(14,6))
-gdf.plot(
+fig, ax = plt.subplots(figsize=(6, 6))
+ma_gdf.plot(
     column="TrAccess_Index",
     cmap="viridis",
     scheme="Quantiles",
@@ -87,23 +75,15 @@ gdf.plot(
     },
     ax=ax
 )
-plt.title("Transit Accessibility Index by CBG")
+
+plt.title("Transit Accessibility Index - Massachusetts Metro Areas")
 plt.axis("off")
 plt.tight_layout()
-plt.savefig("outputs/map_accessibility.png", bbox_inches="tight")
+plt.savefig("outputs/map_accessibility_ma.png", bbox_inches="tight", dpi=300)
 plt.show()
-'''
-
-# Accessibility vs. Job Reachability Scatterplot
-# sns.scatterplot(x="avg_access", y="avg_jobs", data=agg, color="seagreen", alpha=0.7)
-# plt.title("Transit Accessibility vs. Job Reachability by Metro Area")
-# plt.xlabel("Average Accessibility Index")
-# plt.ylabel("Average % of Jobs Reachable")
-# plt.tight_layout()
-# plt.savefig("outputs/scatter_access_vs_jobs.png")
-# plt.show()
 
 print("Visualizations saved to outputs:")
 print(" - map_accessibility.png")
+print(" - map_accessibility_ma.png")
 print(" - top10_metros_jobs.png")
 print(" - scatter_access_vs_jobs.png")
