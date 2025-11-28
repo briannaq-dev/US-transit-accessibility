@@ -30,67 +30,185 @@
         </div>
     </div>
 
-    <!-- Column Name Table -->
-    <div>
-        <h2>Our Data</h2>
-        <p>Information about our data and the columns included in our dataset.
-        We can also talk about how we cleaned our data and how we aggregated it?</p>
+    <!-- Introduction -->
+    <div class="section">
+        <h2>Introduction</h2>
+        <p>Understanding transit accessibility in the United States is essential for
+            evaluating how transportation systems shape <b>economic opportunity</b>, <b>mobility</b>,
+            and <b>quality of life</b> across metropolitan regions. Public transit is a critical
+            connector between residents and employment centers, yet the degree to which
+            people can reliable reach jobs varies widely from city to city. Transit
+            accessibility measures how many job opportunities an individual can reach
+            within a reasonable travel time–in this case, within 45 minutes via transit
+            and/or walking–and serves as a meaningful indicator of <b>urban infrastructure
+            performance</b>, <b>workforce inclusivity</b>, and <b>regional equity</b>.</p>
+        <img
+            src="assets/subway.png"
+            alt="new york city subway station"
+            width="550"
+            class="spacing-y"/>
+        <p>Monitoring differences in transit accessibility provides insights into broader
+            social and economic outcomes, such as workers’ ability to reach <b>stable employment</b>,
+            the effectiveness of <b>local transportation investments</b>, and the extend to which
+            cities support <b>upward mobility</b>. High levels of job accessibility often reflect
+            efficient transit networks, compact urban design, and equitable transportation
+            planning. These factors can strengthen regional labor markets and support
+            long-term economic growth. Conversely, low accessibility may signal geographic
+            isolation, underinvestment in transit services, or disparities that affect
+            low-income communities and essential workers.</p>
+        <p>Transit accessibility also intersects with socioeconomic factors such as income,
+            housing, and spatial inequality. Metro areas with limited job access via transit
+            may experience increased financial strain on households, reduced employment
+            stability, and greater dependence on personal vehicles, which can burden
+            disadvantaged communities. Examining how these disparities helps identify
+            which regions foster inclusive mobility and which are falling behind in providing
+            equitable access to opportunities.</p>
+        <div class="block">
+            <p>To learn more about transit accessibility and national mobility patterns,
+            additional information can be found through organizations such as the
+            <a href="https://www.epa.gov/">U.S. Environmental Protection Agency</a> and the
+            <a href="https://www.bts.gov/">Bureau of Transportation Statistics</a>.
+            </p>
+        </div>
     </div>
-    <div id="column-table" class="column-table"></div>
+
+    <!-- Column Name Table -->
+    <div class="section">
+        <h2>Our Data</h2>
+        <p>For our data, we used two datasets, both collected by the EPA.
+            The first dataset is called <mark class="code">smartlocation.csv</mark> and the second
+            dataset is called <mark class="code">sld_trans45.csv</mark>. The detailed information
+            about the features used throughout this project is listed in
+            the following table:</p>
+        <div id="column-table" class="column-table"></div>
+    </div>
 
     <!-- Bar Chart -->
-    <h2>Bar Chart</h2>
-    <p>More information about what is being shown in the graph below, how this represents
-    the top 10 metro areas with the best job accessibility by public transit.</p>
-    <div id="barchart">
-        <img
-        src="outputs/top10_metros_bar.png"
-        alt="job accessibility by public transit"
-        height="600"
-        width="600"/>
-    </div>
-
-    <!-- Scatterplot -->
-    <h2>Scatterplot</h2>
-    <p>More information about how this scatterplot represents the relationship between
-        acessibility in general and the percent of jobs reachable by public transit.
-    </p>
-        <div id="scatterplot">
-            <iframe
-              src="outputs/scatter_access_vs_jobs.html"
-              width="600"
-              height="600"
-              style="border:none;"
-            ></iframe>
+    <div class="section">
+        <h2>Top 10 Metro Areas for Job Accessibility via Public Transit</h2>
+        <p>More information about what is being shown in the graph below, how this represents
+        the top 10 metro areas with the best job accessibility by public transit.</p>
+        <div id="barchart">
+            <img
+            src="outputs/top10_metros_bar.png"
+            alt="job accessibility by public transit"
+            width="600"
+            height="auto"/>
         </div>
-
-    <!-- Bar Plot #2-->
-    <h2>Bar Plot #2</h2>
-    <div id="barplot2">
-        <img
-              src="outputs/top10_lowgwrks_bar.png"
-              width="600"
-              height="600"
-              style="border:none;"
-        ></img>
     </div>
+
 
     <!-- Choropleth -->
-    <h2>Choropleth</h2>
-    <div id="choropleth">
-        <img
-              src="outputs/map_accessibility_ma.png"
-              width="600"
-              height="600"
-              style="border:none;"
-        ></img>
+    <div class="section">
+        <h2>Map View of Accessibility Scores</h2>
+        <div id="choropleth">
+            <p>
+                Knowing that Corvallis, Oregon had the highest score for job accessibility
+                via public transit, we wanted to display the state data from a map view.
+            </p>
+            <img
+                src="outputs/map_accessibility_or.png"
+                width="600"
+                c
+                style="border:none;"
+            ></img>
+            <p class="spacing-y">
+                As students who live in Boston, we were extremely shocked to see that the public
+                transit in Boston did not appear in the top 10 metro areas that had the highest
+                job accessibility through public transit. 
+            </p>
+            <img
+                src="outputs/map_accessibility_ma.png"
+                width="600"
+                height="auto"
+                style="border:none;"
+            ></img>
+        </div>
     </div>
-
 
 
     <!-- Side by Side Bar Chart -->
-    <h2>Side by Side Bar Chart</h2>
-    <div id="barplot"></div>
+    <div class="section">
+        <h2>Side by Side Bar Chart</h2>
+        <div id="barplot"></div>
+    </div>
+
+    <!-- Scatterplot -->
+    <div class="section">
+        <h2>Scatterplot</h2>
+        <p>More information about how this scatterplot represents the relationship between
+            acessibility in general and the percent of jobs reachable by public transit.
+        </p>
+            <div id="scatterplot">
+                <iframe
+                src="outputs/scatter_access_vs_jobs.html"
+                height="400"
+                width="600"
+                style="border:none;"
+                ></iframe>
+            </div>
+    </div>
+
+    <!-- Scatterplot Walkability -->
+    <div class="section">
+        <h2>Scatterplot Walkability </h2>
+        <p>More information about how this scatterplot represents the relationship between
+            acessibility in general and the percent of jobs reachable by public transit.
+        </p>
+            <div id="scatterplot">
+                <iframe
+                src="outputs/scatterplot_walk_popdensity.html"
+                width="600"
+                height="400"
+                style="border:none;"
+                ></iframe>
+            </div>
+    </div>
+
+    <!-- Scatterplot Zero-Car Households -->
+    <div class="section">
+        <h2>Scatterplot Zero-Car Households </h2>
+        <p>More information about how this scatterplot represents the relationship between
+            acessibility in general and the percent of jobs reachable by public transit.
+        </p>
+            <div id="scatterplot">
+                <iframe
+                src="outputs/scatterplot_zero_car.html"
+                width="600"
+                height="400"
+                style="border:none;"
+                ></iframe>
+            </div>
+    </div>
+
+    <!-- Bar Plot #2-->
+    <div class="section">
+        <h2>Bar Plot #2</h2>
+        <div id="barplot2">
+            <img
+                src="outputs/top10_pop_bar.png"
+                width="600"
+                height="auto"
+                style="border:none;"
+            ></img>
+        </div>
+    </div>
+
+    <!-- Interactive Bar #3-->
+    <div class="section">
+        <h2>Interactive Bar</h2>
+        <div id="barplot2">
+            <img
+                src="outputs/interactive_bar.html"
+                width="600"
+                height="auto"
+                style="border:none;"
+            ></img>
+        </div>
+    </div>
+
+
+    
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="columnname.js"></script>

@@ -5,18 +5,71 @@ html {
     margin-right: 30%;
 }
 
+@media (max-width: 1200px) {
+  html {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+@media (max-width: 900px) {
+  html {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
 h2 {
-    color: white;
+    color: #F9E8DE;
     font-size: 30px;
     font-weight: bold;
     font-family: "Hanken Grotesk", sans-serif;
 }
 
+p {
+    font-weight: 350;
+    line-height: 1.5;
+    color: #F9E8DE;
+}
+
+b {
+    color: #D79898;
+    padding: 2px 6px 2px 6px;
+    background-color: #432E2E
+}
+
+a {
+    color: #F9E8DE;
+    text-decoration: underline;
+    text-underline-offset: 25%;
+    text-decoration-thickness: 1px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 body {
-    color: white;
+    color: #F9E8DE;
     font-size: 20px;
     font-weight: normal;
     font-family: "Hanken Grotesk", sans-serif;
+}
+
+.section {
+    margin-bottom: 100px;
+}
+
+.spacing-y {
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 img {
@@ -28,6 +81,16 @@ img {
     font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 3;
+}
+
+.code {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 14px;
+    background-color: #3D3535;
+    color: #F9E8DE;
+    padding: 4px 8px 4px 8px;
+    /* letter-spacing: 1.2; */
+    /* text-transform: uppercase; */
 }
 
 /* Meta Info Styling */
@@ -55,11 +118,28 @@ img {
 
 .header {
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.7;
 }
 
 .cell {
     padding: 8px 12px;
+    font-size: 14px;
     margin-right: 10px;
     background-color: #3D3535;
     font-family: "Hanken Grotesk", sans-serif;
+}
+
+/* Text Block Styling */
+
+.block {
+    border-top: solid #504747 1px;
+    border-bottom: solid #504747 1px;
+    font-size: 14px;
+    line-height: 1.5;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #3D3535;
 }

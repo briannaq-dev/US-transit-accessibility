@@ -3,17 +3,17 @@ const transitData = d3.csv("outputs/metro_aggregated.csv");
 transitData.then(function(data) {
   // Convert string values to numbers and calculate difference
   data.forEach(d => {
-    d.avg_LoWgWrks_byTr = +d.avg_LoWgWrks_byTr;
-    d.avg_HiWgWrks_byTr = +d.avg_HiWgWrks_byTr;
-    d.Diff = Math.abs(d.avg_LoWgWrks_byTr - d.avg_HiWgWrks_byTr);
+    d.pct_LoWgWrks_byTr = +d.pct_LoWgWrks_byTr;
+    d.pct_MeWgWrks_byTr = +d.pct_MeWgWrks_byTr;
+    d.Diff = Math.abs(d.pct_LoWgWrks_byTr - d.pct_MeWgWrks_byTr);
   });
 
   // Filter out rows with missing data
   const validData = data.filter(d => 
-    !isNaN(d.avg_LoWgWrks_byTr) && 
-    !isNaN(d.avg_HiWgWrks_byTr) &&
-    d.avg_LoWgWrks_byTr > 0 &&
-    d.avg_HiWgWrks_byTr > 0
+    !isNaN(d.pct_LoWgWrks_byTr) && 
+    !isNaN(d.pct_MeWgWrks_byTr) &&
+    d.pct_LoWgWrks_byTr > 0 &&
+    d.pct_MeWgWrks_byTr > 0
   );
 
   // Sort by difference and get top 10
@@ -23,7 +23,7 @@ transitData.then(function(data) {
   console.log("Top 10 CBSAs:", top10.map(d => ({ name: d.CBSA_Name, diff: d.Diff })));
 
   // --- SVG setup ---
-  const width = 600, height = 900;
+  const width = 600, height = 700;
   const margin = { top: 60, bottom: 150, left: 80, right: 40 };
 
   const svg = d3.select("#barplot")
@@ -39,17 +39,17 @@ transitData.then(function(data) {
     .padding(0.3);
 
   const x1 = d3.scaleBand()
-    .domain(["LoWgWrks", "HiWgWrks"])
+    .domain(["LoWgWrks", "MeWgWrks"])
     .range([0, x0.bandwidth()])
     .padding(0.1);
 
   const y = d3.scaleLinear()
-    .domain([0, d3.max(top10, d => Math.max(d.avg_LoWgWrks_byTr, d.avg_HiWgWrks_byTr))])
+    .domain([0, d3.max(top10, d => Math.max(d.pct_LoWgWrks_byTr, d.pct_MeWgWrks_byTr))])
     .nice()
     .range([height - margin.bottom, margin.top]);
 
   const color = d3.scaleOrdinal()
-    .domain(["LoWgWrks", "HiWgWrks"])
+    .domain(["LoWgWrks", "MeWgWrks"])
     .range(["#7E3A3A", "#96752C"]);
 
   // --- AXES ---
@@ -64,9 +64,9 @@ transitData.then(function(data) {
     .style("font-size", "11px")
     .style("fill", "#FFFFFF");
 
-  svg.append("g")
+    svg.append("g")
     .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y).tickFormat(d3.format(".2s")))
+    .call(d3.axisLeft(y).tickFormat(d => `${(d * 100).toFixed(0)}%`))
     .selectAll("text")
     .style("fill", "#FFFFFF");
 
@@ -80,8 +80,8 @@ transitData.then(function(data) {
 
   groups.selectAll("rect")
     .data(d => [
-      { key: "LoWgWrks", value: d.avg_LoWgWrks_byTr },
-      { key: "HiWgWrks", value: d.avg_HiWgWrks_byTr }
+      { key: "LoWgWrks", value: d.pct_LoWgWrks_byTr },
+      { key: "MeWgWrks", value: d.pct_MeWgWrks_byTr }
     ])
     .enter()
     .append("rect")
@@ -108,16 +108,16 @@ transitData.then(function(data) {
     .attr("y", 25)
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
-    .text("Avg. Workers Reachable in 45 min")
+    .text("Avg. % of Jobs Reachable (≤ 45 min)")
     .style("fill", "#FFFFFF");
 
   // --- LEGEND ---
   const legend = svg.append("g")
-    .attr("transform", `translate(${width - 320}, ${margin.top + 20})`);
+    .attr("transform", `translate(${margin.left}, 50)`);  // Position it at the left side, near the top
 
   const categories = [
     { key: "LoWgWrks", label: "Low-Wage Workers (≤ $1250/month)" },
-    { key: "HiWgWrks", label: "High-Wage Workers (> $3333/month)" }
+    { key: "MeWgWrks", label: "Medium-Wage Workers (Between $1250/month and $3333/month)" }
   ];
 
   categories.forEach((cat, i) => {
