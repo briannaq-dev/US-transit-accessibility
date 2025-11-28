@@ -8,33 +8,35 @@ import zipfile
 import tempfile
 import shutil
 
-# --- Step 1: Unzip the .gdb.zip file ---
-zip_path = "SLD_Trans45.gdb.zip"  # your zipped geodatabase
-if not os.path.exists(zip_path):
-    raise FileNotFoundError(f"Zip file not found: {zip_path}")
+def unzip_gdb(zip_path):
+    temp_dir = tempfile.mkdtemp()
+    with zipfile.ZipFile(zip_path, "r") as zip_ref:
+        zip_ref.extractall(temp_dir)
 
-temp_dir = tempfile.mkdtemp()
-with zipfile.ZipFile(zip_path, "r") as zip_ref:
-    zip_ref.extractall(temp_dir)
+    # Find .gdb folder
+    gdb_candidates = [
+        os.path.join(temp_dir, f)
+        for f in os.listdir(temp_dir)
+        if f.endswith(".gdb") and os.path.isdir(os.path.join(temp_dir, f))
+    ]
 
-# Find the .gdb directory inside the extracted files
-gdb_candidates = [
-    os.path.join(temp_dir, f)
-    for f in os.listdir(temp_dir)
-    if f.endswith(".gdb") and os.path.isdir(os.path.join(temp_dir, f))
-]
+    if not gdb_candidates:
+        raise FileNotFoundError(f"No .gdb directory found inside {zip_path}")
 
-if not gdb_candidates:
-    raise FileNotFoundError("No .gdb directory found inside the .zip file.")
-gdb_path = gdb_candidates[0]
+    gdb_path = gdb_candidates[0]
+    print(f"Extracted GDB found at: {gdb_path}")
 
-print(f"✅ Extracted GDB found at: {gdb_path}")
+    return gdb_path, temp_dir
 
-# --- Step 2: Load data ---
+gdb1_path, temp1 = unzip_gdb("SLD_Trans45.gdb.zip")
+gdb2_path, temp2 = unzip_gdb("SmartLocationDatabaseV3.zip")
+
 layer_name = "CBG_Trans45"
-gdf = gpd.read_file(gdb_path, layer=layer_name)
+gdf = gpd.read_file(gdb1_path, layer=layer_name)
 
-# --- Step 3: Clean and prepare the data ---
+smart_layer = "EPA_SLD_Database_V3"
+gdf_smart = gpd.read_file(gdb2_path, layer=smart_layer)
+
 drop_cols = [c for c in gdf.columns if re.search(r'Shape|geometry|Area|Length', c, re.IGNORECASE)]
 df = gdf.drop(columns=drop_cols, errors="ignore")
 
@@ -55,23 +57,19 @@ group = df.groupby('CBSA_Name', dropna=True)
 agg = group.agg(
     metro_count=('GEOID10', 'count'),
     avg_access=('TrAccess_Index', 'mean'),
-    avg_pop=('Pct_Pop_byTr_av', 'mean') if 'Pct_Pop_byTr_av' in df.columns else ('Pct_Pop_byTr', 'mean'),
-    avg_jobs=('Pct_Jobs_byTr_av', 'mean') if 'Pct_Jobs_byTr_av' in df.columns else ('Pct_Jobs_byTr', 'mean'),
-    avg_LoWgWrks_byTr=('LoWgWrks_byTr', 'mean') if 'LoWgWrks_byTr' in df.columns else (None, 'mean'),
-    avg_HiWgWrks_byTr=('HiWgWrks_byTr', 'mean') if 'HiWgWrks_byTr' in df.columns else (None, 'mean')
+    avg_pop=('Pct_Pop_byTr', 'mean'),
+    avg_jobs=('Pct_Jobs_byTr', 'mean'),
+    avg_LoWgWrks_byTr=('LoWgWrks_byTr', 'mean'),
+    avg_HiWgWrks_byTr=('HiWgWrks_byTr', 'mean')
 ).reset_index()
 
-# --- Step 4: Export cleaned data ---
 os.makedirs("outputs", exist_ok=True)
-df.drop(columns=['geometry'], errors='ignore').to_csv("outputs/cleaned_transit_data.csv", index=False)
+df.to_csv("outputs/cleaned_transit_data.csv", index=False)
 gdf.to_file("outputs/cleaned_transit_data.geojson", driver="GeoJSON")
 agg.to_csv("outputs/metro_aggregated.csv", index=False)
+gdf_smart.to_file("outputs/smartlocation.geojson", driver="GeoJSON")
+gdf_smart.to_csv("outputs/smartlocation.csv", index=False)
+print("Saved SmartLocation dataset.")
 
-print("\nSaved files:")
-print(" - outputs/cleaned_transit_data.csv")
-print(" - outputs/cleaned_transit_data.geojson")
-print(" - outputs/metro_aggregated.csv")
-
-# --- Step 5: Clean up temporary directory ---
-shutil.rmtree(temp_dir)
-print(f"\n🧹 Cleaned up temporary folder: {temp_dir}")
+shutil.rmtree(temp1)
+shutil.rmtree(temp2)
