@@ -3,6 +3,7 @@ html {
     font-family: "Hanken Grotesk", sans-serif;
     margin-left: 30%;
     margin-right: 30%;
+    margin-top: 5%;
 }
 
 @media (max-width: 1200px) {

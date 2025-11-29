@@ -29,14 +29,25 @@ for c in pct_cols:
 group = df.groupby('CBSA_Name', dropna=True)
 agg = group.agg(
     metro_count=('GEOID10', 'count'),
+    # State FIPS
+    state_fp=('STATEFP', 'mean') if 'STATEFP' in df.columns else ('STATEFP', 'mean'),
+    # Average Population
+    avg_population=('CBSA_POP', 'mean') if 'CBSA_POP' in df.columns else ('CBSA_POP', 'mean'),
     # Population Density
     avg_D1B=('D1B', 'mean') if 'D1B' in df.columns else ('D1B', 'mean'),
     # National Walkability Index
     avg_NWI=('NatWalkInd', 'mean') if 'NatWalkInd' in df.columns else ('NatWalkInd', 'mean'),
     # Percent of Zero-Car Households
-    avg_pct_zero_car_HH=('Pct_AO0', 'mean') if 'Pct_AO0' in df.columns else ('Pct_AO0', 'mean')
+    avg_pct_zero_car_HH=('Pct_AO0', 'mean') if 'Pct_AO0' in df.columns else ('Pct_AO0', 'mean'),
+    # Percent of Low Wage Workers
+    avg_pct_low_wage=('R_PCTLOWWAGE', 'mean') if 'R_PCTLOWWAGE' in df.columns else ('R_PCTLOWWAGE', 'mean')
     
 ).reset_index()
+
+# Set state_fp to 0 if it's not a whole number, otherwise keep it as integer
+# Reasoning for this is some CBSA spans multiple states so we want to keep the data
+# correct
+agg['state_fp'] = np.where(agg['state_fp'] % 1 == 0, agg['state_fp'].astype(int), 0)
 
 # --- Step 4: Export results ---
 os.makedirs("outputs", exist_ok=True)

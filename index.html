@@ -12,11 +12,7 @@
 <body>
 
     <!-- Title -->
-    <img
-    src="assets/header.svg"
-    alt="job accessibility by public transit"
-    height="400"
-    width="400"/>
+    <h1>Accessibile Cities: Understanding Public Transit & Walkability</h1>
 
     <!-- Meta -->
     <div class="metainfo">
@@ -45,7 +41,7 @@
         <img
             src="assets/subway.png"
             alt="new york city subway station"
-            width="550"
+            width="100%"
             class="spacing-y"/>
         <p>Monitoring differences in transit accessibility provides insights into broader
             social and economic outcomes, such as workers’ ability to reach <b>stable employment</b>,
@@ -86,12 +82,22 @@
     <!-- Bar Chart -->
     <div class="section">
         <h2>Top 10 Metro Areas for Job Accessibility via Public Transit</h2>
-        <p>More information about what is being shown in the graph below, how this represents
-        the top 10 metro areas with the best job accessibility by public transit.</p>
+        <p>This graph introduces the overall landscape of transit accessibility by highlighting the
+            top ten metro areas with the highest percentage of jobs reachable within a forty-five-minute
+            transit commute.
+        <p>The results show that many of the strongest performers are smaller or mid-sized
+            regions such as <b>Corvallis</b>, <b>Missoula</b>, and <b>Butte Silver Bow</b>. These areas demonstrate that high job
+            accessibility often emerges when residential density, employment locations, and transit routes
+            are closely aligned. In these regions, the physical distance between where people live and where
+            jobs are located is short enough for transit to function efficiently, which helps explain why they
+            rise to the top of the ranking.</p>
+        <p>This graph establishes a foundation for understanding how local
+            geography and urban structure influence access to employment.</p>
         <div id="barchart">
             <img
             src="outputs/top10_metros_bar.png"
             alt="job accessibility by public transit"
+            class="spacing-y"
             width="600"
             height="auto"/>
         </div>
@@ -100,113 +106,125 @@
 
     <!-- Choropleth -->
     <div class="section">
-        <h2>Map View of Accessibility Scores</h2>
+        <h2>Map View of Job Accessibility via Public Transit</h2>
         <div id="choropleth">
             <p>
-                Knowing that Corvallis, Oregon had the highest score for job accessibility
-                via public transit, we wanted to display the state data from a map view.
+                Knowing <b>Corvallis, OR</b> had the highest average percentage of jobs reachable
+                through public transit, we wanted to understand the data in the larger picture by
+                creating a choropleth map.
+                </p>
+            <p>The choropleth map of Oregon shows a more fragmented distribution of transit
+                accessibility across the state. Only a few concentrated areas around Portland,
+                Salem, and Eugene appear in the highest accessibility category,
+                while the majority of block groups fall into the lowest tier. This pattern
+                reflects Oregon’s more rural and dispersed development structure, where job
+                centers and residential areas are spread farther apart and transit coverage
+                is less continuous. Even in regions with stronger service, high accessibility
+                is limited to isolated pockets rather than forming a broad and cohesive network.
+                These characteristics help explain why most Oregon metropolitan areas do not rank
+                highly in overall job accessibility, despite some urban centers providing well-connected
+                transit corridors.
             </p>
             <img
                 src="outputs/map_accessibility_or.png"
                 width="600"
-                c
+                class="spacing-y"
                 style="border:none;"
             ></img>
-            <p class="spacing-y">
-                As students who live in Boston, we were extremely shocked to see that the public
-                transit in Boston did not appear in the top 10 metro areas that had the highest
-                job accessibility through public transit. 
+            <p>
+                In contrast, the map of <b>Massachusetts</b> displays much wider and more continuous areas of high
+                transit accessibility, particularly in and around Greater Boston and along the major transit
+                corridors that extend outward from the city. Large regions of the state fall into the upper
+                accessibility categories, indicating a denser and more interconnected transit network. Yet,
+                despite this strong spatial coverage, Massachusetts does not appear among the top metro areas
+                for jobs reachable within forty five minutes.</p>
+            <p>Massachusetts also operates on a <a href="https://www.mbta.com/fares/subway-fares">fare based
+                transit system</a>, while Corvallis <a href="https://www.corvallisoregon.gov/cts/page/cts-fundingfares">provides free public
+                transit</a>, which lowers barriers to use and encourages higher ridership. As a result,
+                metro areas like Corvallis, where jobs, residents, and free transit services are tightly
+                concentrated, can achieve higher overall job accessibility than larger regions with broader
+                but more dispersed networks such as Massachusetts.
             </p>
             <img
                 src="outputs/map_accessibility_ma.png"
                 width="600"
                 height="auto"
+                class="spacing-y"
                 style="border:none;"
             ></img>
         </div>
     </div>
-
 
     <!-- Side by Side Bar Chart -->
     <div class="section">
-        <h2>Side by Side Bar Chart</h2>
+        <h2>Comparing largest disparities in job accessibility via public transit by wage</h2>
+        <p>
+            The side by side bar chart explores socioeconomic issues by comparing job accessibility
+            for low wage and medium wage workers in the metro areas with the largest differences.</p>
+        <p>
+            In many of the regions shown in the chart, low wage workers actually have access to a
+            higher percentage of jobs within a forty five minute transit commute when compared to
+            medium wage workers. Cities such as Bloomington, Blacksburg, Fayetteville, Ann Arbor,
+            and Champaign Urbana all show this pattern, which suggests that jobs available to lower
+            wage workers may be located closer to dense housing or situated along transit routes with
+            more frequent service. Only a few metro areas, including Salina, Springfield, and Reno Sparks,
+            show the more common pattern where medium wage workers have an advantage.</p>
+    
         <div id="barplot"></div>
-    </div>
-
-    <!-- Scatterplot -->
-    <div class="section">
-        <h2>Scatterplot</h2>
-        <p>More information about how this scatterplot represents the relationship between
-            acessibility in general and the percent of jobs reachable by public transit.
+        <p>This variation demonstrates that transit accessibility does not follow a single national trend and instead
+            depends on how each region organizes its job locations and transit network. The chart
+            highlights that some metro areas may be supporting mobility for low wage workers more
+            effectively than expected, while others continue to show gaps that affect both equity
+            and opportunity.
         </p>
-            <div id="scatterplot">
-                <iframe
-                src="outputs/scatter_access_vs_jobs.html"
-                height="400"
-                width="600"
-                style="border:none;"
-                ></iframe>
-            </div>
     </div>
 
-    <!-- Scatterplot Walkability -->
+    <!-- Selecting States for Walkability Score -->
     <div class="section">
-        <h2>Scatterplot Walkability </h2>
-        <p>More information about how this scatterplot represents the relationship between
-            acessibility in general and the percent of jobs reachable by public transit.
+        <h2>Understanding walkability versus population density</h2>
+        <p>To see the relationship between walkability and population density, we
+            created a filterable scatterplot by state.
         </p>
-            <div id="scatterplot">
-                <iframe
-                src="outputs/scatterplot_walk_popdensity.html"
-                width="600"
-                height="400"
-                style="border:none;"
-                ></iframe>
-            </div>
-    </div>
-
-    <!-- Scatterplot Zero-Car Households -->
-    <div class="section">
-        <h2>Scatterplot Zero-Car Households </h2>
-        <p>More information about how this scatterplot represents the relationship between
-            acessibility in general and the percent of jobs reachable by public transit.
-        </p>
-            <div id="scatterplot">
-                <iframe
-                src="outputs/scatterplot_zero_car.html"
-                width="600"
-                height="400"
-                style="border:none;"
-                ></iframe>
-            </div>
-    </div>
-
-    <!-- Bar Plot #2-->
-    <div class="section">
-        <h2>Bar Plot #2</h2>
-        <div id="barplot2">
-            <img
-                src="outputs/top10_pop_bar.png"
-                width="600"
-                height="auto"
-                style="border:none;"
-            ></img>
+        <div id="scatterplot" class="spacing-y">
+            <iframe
+            src="outputs/select_state.html"
+            width="600"
+            height="400"
+            style="border:none;"
+            ></iframe>
         </div>
     </div>
 
-    <!-- Interactive Bar #3-->
+    <!-- Slider Scatterplot Zero-Car Households -->
     <div class="section">
-        <h2>Interactive Bar</h2>
-        <div id="barplot2">
-            <img
-                src="outputs/interactive_bar.html"
-                width="600"
-                height="auto"
-                style="border:none;"
-            ></img>
+        <h2>Understanding the relationship between walkability and zero-car households</h2>
+        <p>To further explore the relationship between the walkability of a metro area and the average
+            percentage of zero-car households, we wanted to use a slider interactivity to see the population
+            for that metro area. It appears that the <b>New York-Newark-Jersey City, NY-NJ Metro Area</b> has the
+            highest population for a metro area with over 19 million residents, an average
+            percentage of 27.5% for zero-car households, and a walkability score of 12.6 out of 20.
+        </p>
+        <div class="block">
+            <p>Walkability Scores are calculated from 0-20.
+            </p>
         </div>
+        <p>To interact with the graph, use the slider below to adjust the cutoff for population size.</p>
+            <div id="scatterplot" class="spacing-y">
+                <iframe
+                src="outputs/slider_scatterplot_zero_car.html"
+                width="600"
+                height="400"
+                style="border:none;"
+                ></iframe>
+            </div>
     </div>
 
+    <!-- Conclusions & Summary -->
+    <div class="section">
+        <h2>Conclusion and Summary</h2>
+        <p>Write conclusion here</p>
+    </div>
+    
 
     
 

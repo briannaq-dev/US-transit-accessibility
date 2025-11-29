@@ -1,3 +1,9 @@
+// This script is used to create the side-by-side bar chart
+// that compares the average % of job accessibility among
+// low and medium waged workers for each CBSA. To filter,
+// we sorted by largest differences between low and medium
+// waged workers and selected the top 10.
+
 const transitData = d3.csv("outputs/metro_aggregated.csv");
 
 transitData.then(function(data) {
@@ -62,13 +68,13 @@ transitData.then(function(data) {
     .attr("dy", "0.15em")
     .style("text-anchor", "end")
     .style("font-size", "11px")
-    .style("fill", "#FFFFFF");
+    .style("fill", "#F9E8DE");
 
     svg.append("g")
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y).tickFormat(d => `${(d * 100).toFixed(0)}%`))
     .selectAll("text")
-    .style("fill", "#FFFFFF");
+    .style("fill", "#F9E8DE");
 
   // --- BARS ---
   const groups = svg.selectAll(".group")
@@ -99,7 +105,7 @@ transitData.then(function(data) {
     .style("font-size", "18px")
     .style("font-weight", "bold")
     .text("Top 10 Metro Areas: Largest Transit Access Disparities by Wage")
-    .style("fill", "#FFFFFF");
+    .style("fill", "#F9E8DE");
 
   // --- AXIS LABELS ---
   svg.append("text")
@@ -109,11 +115,11 @@ transitData.then(function(data) {
     .attr("text-anchor", "middle")
     .style("font-size", "14px")
     .text("Avg. % of Jobs Reachable (≤ 45 min)")
-    .style("fill", "#FFFFFF");
+    .style("fill", "#F9E8DE");
 
   // --- LEGEND ---
   const legend = svg.append("g")
-    .attr("transform", `translate(${margin.left}, 50)`);  // Position it at the left side, near the top
+    .attr("transform", `translate(${margin.left + 10}, 60)`);  // Position it at the left side, near the top
 
   const categories = [
     { key: "LoWgWrks", label: "Low-Wage Workers (≤ $1250/month)" },
@@ -133,6 +139,6 @@ transitData.then(function(data) {
       .attr("y", i * 25 + 13)
       .text(cat.label)
       .style("font-size", "13px")
-      .style("fill", "#FFFFFF");;
+      .style("fill", "#F9E8DE");;
   });
 });
