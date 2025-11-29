@@ -76,7 +76,12 @@
             dataset is called <mark class="code">sld_trans45.csv</mark>. The detailed information
             about the features used throughout this project is listed in
             the following table:</p>
+
+        <h3>Smart Location Data</h3>
         <div id="column-table" class="column-table"></div>
+        
+        <h3>Job and Transit Accessibility Data</h3>
+        <div id="column-table-2" class="column-table"></div>
     </div>
 
     <!-- Bar Chart -->
@@ -182,8 +187,16 @@
     <!-- Selecting States for Walkability Score -->
     <div class="section">
         <h2>Understanding walkability versus population density</h2>
-        <p>To see the relationship between walkability and population density, we
-            created a filterable scatterplot by state.
+        <p>The scatterplot represents the relationship between walkability scores and population
+            density across metro areas, allowing users to filter by state. The pattern shows a
+            clear upward trend, indicating that more walkable places generally have higher population
+            densities. Most points cluster lower to moderate walkability levels with modest densities,
+            while a smaller number of states reach both high walkability levels and high density. This
+            relationship aligns with the idea that compact development supports pedestrian activity,
+            shorter travel distances, and greater access to daily destinations. This matters because
+            dense and walkable environments reduce reliance on automobiles, lower transportation costs
+            for residents, and create settings where transit, biking, and walking become realistic daily
+            options. 
         </p>
         <div id="scatterplot" class="spacing-y">
             <iframe
@@ -204,6 +217,10 @@
             highest population for a metro area with over 19 million residents, an average
             percentage of 27.5% for zero-car households, and a walkability score of 12.6 out of 20.
         </p>
+        <p>
+            From the graph, we can also see that the metro area with the lowest percentage of zero-car households
+            is <b>Breckenridge, Colorado</b>, with a percentage of 0.98%, demonstrating high car dependency.
+        </p>
         <div class="block">
             <p>Walkability Scores are calculated from 0-20.
             </p>
@@ -217,12 +234,35 @@
                 style="border:none;"
                 ></iframe>
             </div>
+        <p>
+            This connection highlights how walkable environments reduce the need for personal vehicles and support alternative modes of travel.
+            The slider interaction reinforces this relationship by showing that as the minimum population threshold
+            increases, data points that have higher populations tend to have higher walkability scores. Recognizing how walkability supports zero-car
+            living helps policymakers and planners understand the importance of designing
+            neighborhoods that allow residents to meet their daily needs without relying on expensive and energy-intensive transportation.
+        </p>
     </div>
 
     <!-- Conclusions & Summary -->
     <div class="section">
         <h2>Conclusion and Summary</h2>
-        <p>Write conclusion here</p>
+        <p>The visualizations in this project show how transit networks, land use patterns, and socioeconomic factors work together to shape access to opportunity
+            across metropolitan regions. The transit accessibility results reveal that strong job access occurs when residential areas, employment centers, and transit
+            routes are closely aligned, which is why compact cities such as Corvallis outperform larger regions. The comparison between Oregon and Massachusetts highlights
+            how development patterns influence accessibility, showing that even areas with broad transit coverage may have lower job access if destinations are dispersed or
+            if barriers such as fare-based systems limit ease of use. The wage-based analysis adds another dimension by revealing that transit access varies across income
+            groups, demonstrating that local planning and job geography can either support or restrict the mobility of lower-wage workers.</p>
+        <p>
+            The walkability findings further emphasize how built environments shape daily mobility. Higher walkability is strongly associated with greater population density and a
+            higher share of zero-car households, showing that compact neighborhoods make it easier for residents to meet daily needs without relying on a private vehicle.
+            This matters for affordability, environmental sustainability, and equitable access to essential destinations. Overall, the patterns across these graphs illustrate that
+            effective transportation planning depends on integrating transit, land use, and neighborhood design in ways that expand opportunity, reduce transportation burdens, and
+            support more equitable and connected communities.
+        </p>
+        <p>
+            In the future, we would have wanted to include an interactive map that would allow users to zoom into counties within states and view any significant data about public
+            transit, walkability, and job accessibility through the map to boost visual interactivity.
+        </p>
     </div>
     
 
