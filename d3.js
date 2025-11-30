@@ -4,7 +4,7 @@
 // we sorted by largest differences between low and medium
 // waged workers and selected the top 10.
 
-const transitData = d3.csv("outputs/metro_aggregated.csv");
+const transitData = d3.csv("data/metro_aggregated.csv");
 
 transitData.then(function(data) {
   // Convert string values to numbers and calculate difference
