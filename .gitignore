@@ -1,7 +1,7 @@
 # Ignore large data and output files
 outputs/
 *.geojson
-*.csv
+# *.csv
 *.xml
 *.lock
 *.gdb
